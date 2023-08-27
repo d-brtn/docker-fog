@@ -29,11 +29,29 @@ services:
        - fog-settings:/opt/fog/.fogsettings
 
   tftp:
-    image: 
-
+    build: https://github.com/d-brtn/docker-tftpd.git
+    restart: unless-stopped
+    environment:
+      # An interface and a port to listen to. "0.0.0.0" means all interfaces
+      TFTPD_BIND_ADDRESS: "0.0.0.0:1069"
+      # Search the man page for --blocksize to learn more
+      TFTPD_EXTRA_ARGS: '--blocksize 1468'
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETUID
+      - SETGID
+      - SYS_CHROOT
+    ports:
+      - 69:1069/udp
+    volumes:
+      - tftpd_boot:/tftpboot/boot
+      - tftpd_configuration:/tftpboot/pxelinux.cfg:ro
 
 
 volumes:
     db-data:
     fog-settings:
     fog-images:
+    tftpd_boot:
+    tftpd_configuration:
