@@ -28,6 +28,11 @@ services:
        - fog-images:/images
        - fog-settings:/opt/fog/.fogsettings
 
+  tftp:
+    image: 
+
+
+
 volumes:
     db-data:
     fog-settings:
