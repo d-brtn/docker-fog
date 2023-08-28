@@ -14,7 +14,7 @@ services:
       - ./fog.sql:/docker-entrypoint-initdb.d/fog.sql
   web:
     build:
-      context: .
+      context: ./
       dockerfile: ./docker/web/Dockerfile
     depends_on:
       - db
@@ -27,6 +27,8 @@ services:
     volumes:
        - fog-images:/images
        - fog-settings:/opt/fog/.fogsettings
+       - fogproject_master:/mnt/fogproject_master/
+
 
   tftp:
     build: https://github.com/d-brtn/docker-tftpd.git
@@ -48,10 +50,10 @@ services:
       - tftpd_boot:/tftpboot/boot
       - tftpd_configuration:/tftpboot/pxelinux.cfg:ro
 
-
 volumes:
     db-data:
     fog-settings:
     fog-images:
     tftpd_boot:
     tftpd_configuration:
+    fogproject_master:
