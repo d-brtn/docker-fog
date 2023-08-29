@@ -1,6 +1,6 @@
 echo "|||___UPDATING MAIN GIT__|||"
 
-git fetch
+git pull
 
 echo echo "|||___UPDATING GIT SUBMODULES__|||"
 
