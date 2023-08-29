@@ -1,9 +1,14 @@
-echo "|||___UPDATING MAIN GIT__|||"
+export CURRENTAPP="UPDATING GIT"
+echo "\t------------------------------"
+echo "\t STARTING: \t $CURRENTAPP"
+echo "\t------------------------------"
+echo "\t$CURRENTAPP:\t MAIN"
 
 git pull
 
-echo "|||___UPDATING GIT SUBMODULES__|||"
+echo "\t$CURRENTAPP:\t SUBMODULES"
 
 git submodule update
 
-echo "|||___GIT UPDATE COMPLETE__|||"
+echo "\t$CURRENTAPP:\t COMPLETE"
+echo "\t------------------------------"
