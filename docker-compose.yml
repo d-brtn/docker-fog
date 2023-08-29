@@ -11,7 +11,7 @@ services:
     restart: always
     volumes:
       - db-data:/var/lib/mysql
-      - ./fog.sql:/docker-entrypoint-initdb.d/fog.sql
+      - ./build/docker/fog_db/db.sql:/docker-entrypoint-initdb.d/db.sql
   web:
     build:
       context: ./build/
