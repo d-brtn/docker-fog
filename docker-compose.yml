@@ -14,8 +14,8 @@ services:
       - ./build/docker/fog_db/db.sql:/docker-entrypoint-initdb.d/db.sql
   web:
     build:
-      context: ./build/
-      dockerfile: ./docker/web/Dockerfile
+      context: ./build/docker/fog_web
+      dockerfile: Dockerfile
     depends_on:
       - db
     links:
@@ -27,11 +27,14 @@ services:
     volumes:
        - fog-images:/images
        - fog-settings:/opt/fog/.fogsettings
-       - ./docker/web/fogproject_master:/mnt/fogproject_master/
+
 
 
   tftp:
-    build: https://github.com/d-brtn/docker-tftpd.git
+    build:
+      context: ./build/docker/fog_tftp
+      dockerfile: Dockerfile
+      
     restart: unless-stopped
     environment:
       # An interface and a port to listen to. "0.0.0.0" means all interfaces
