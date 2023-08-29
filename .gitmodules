@@ -1,3 +1,6 @@
 [submodule "build/docker/fog_tftp"]
 	path = build/docker/fog_tftp
 	url = https://github.com/d-brtn/docker-tftpd.git
+[submodule "build/docker/fog_web/fogproject-master"]
+	path = build/docker/fog_web/fogproject-master
+	url = https://github.com/d-brtn/fogproject.git
