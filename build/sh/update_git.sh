@@ -2,7 +2,7 @@ echo "|||___UPDATING MAIN GIT__|||"
 
 git pull
 
-echo echo "|||___UPDATING GIT SUBMODULES__|||"
+echo "|||___UPDATING GIT SUBMODULES__|||"
 
 git submodule update
 
