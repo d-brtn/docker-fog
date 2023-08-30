@@ -27,7 +27,7 @@ services:
     volumes:
        - fog-images:/images
        - fog-settings:/opt/fog/.fogsettings
-       - tftpd_boot:/mnt/tftpd_boot/
+       - tftpd_boot:/var/www/html/fog/tftp/
 
 
   tftp:

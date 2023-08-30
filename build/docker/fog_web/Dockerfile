@@ -26,6 +26,7 @@ COPY ./fogproject-master  /mnt/fogproject_master/
 COPY ./config.class.php /mnt/fogproject_master/packages/web/lib/fog/config.class.php
 RUN cp -r /mnt/fogproject_master/packages/web/ /var/www/html/fog/
 
-RUN mkdir /var/www/html/fog/tftp/ && \
-    ln -s /mnt/tftpboot/ /var/www/html/fog/tftp/
+#RUN mkdir /var/www/html/fog/tftp/ 
+# && \
+    #ln -s /mnt/tftpboot/ /var/www/html/fog/tftp/
 #COPY ./config.class.php /var/www/html/fog/lib/fog/
