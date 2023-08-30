@@ -32,7 +32,7 @@ services:
 
   tftp:
     build:
-      dockerfile: ./build/docker/fog_tftp/Dockerfile
+      dockerfile: ./build/docker/fog_tftpd/Dockerfile
     restart: unless-stopped
     environment:
       # An interface and a port to listen to. "0.0.0.0" means all interfaces
