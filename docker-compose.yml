@@ -18,8 +18,10 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - db
+      - tftp
     links:
       - db
+      - tftp
     ports:
       - "80:80"
       - "443:443"
