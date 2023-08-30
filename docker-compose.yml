@@ -27,12 +27,13 @@ services:
     volumes:
        - fog-images:/images
        - fog-settings:/opt/fog/.fogsettings
-
+       - tftpd_boot:/mnt/tftpd_boot/
 
 
   tftp:
     build:
-      dockerfile: ./build/docker/fog_tftpd/Dockerfile
+      dockerfile: Dockerfile
+      context: ./build/docker/fog_tftpd/
     restart: unless-stopped
     environment:
       # An interface and a port to listen to. "0.0.0.0" means all interfaces

@@ -24,5 +24,6 @@ RUN for directory in log service snapins; do mkdir -p /opt/fog/$directory; done
 COPY ./php.ini /usr/local/etc/php/
 COPY ./fogproject-master  /mnt/fogproject_master/
 COPY ./config.class.php /mnt/fogproject_master/packages/web/lib/fog/config.class.php
-RUN  cp -r /mnt/fogproject_master/packages/web/ /var/www/html/fog/
+RUN cp -r /mnt/fogproject_master/packages/web/ /var/www/html/fog/
+RUN ln -s /mnt/tftpboot/ /var/www/html/fog/
 #COPY ./config.class.php /var/www/html/fog/lib/fog/
