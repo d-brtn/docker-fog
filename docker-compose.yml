@@ -59,8 +59,7 @@ services:
       - SETUID
       - SETGID
       - SYS_CHROOT
-    ports:
-      - 69:1069/udp
+
     volumes:
       - tftpd_boot:/fog/tftp/
       - tftpd_configuration:/tftpboot/pxelinux.cfg:ro
