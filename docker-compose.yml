@@ -12,27 +12,38 @@ services:
     volumes:
       - db-data:/var/lib/mysql
       - ./build/docker/fog_db/db.sql:/docker-entrypoint-initdb.d/db.sql
-  web:
+  
+  reverse_proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    ports:
+      - '3080:80'
+      - '3081:81'
+      - '3043:443'
+  
+  
+  fog_web:
     build:
       context: ./build/docker/fog_web
       dockerfile: Dockerfile
     depends_on:
       - db
-      - tftp
+      - fog_tftp
     links:
       - db
-      - tftp
+      - fog_tftp
     ports:
-      - "80:80"
-      - "443:443"
+    # - host : container 
+      - "2080:80"
+      - "2443:443"
     tty: true
     volumes:
        - fog-images:/images
        - fog-settings:/opt/fog/.fogsettings
-       - tftpd_boot:/var/www/html/fog/tftp/
+       #- tftpd_boot:/var/www/html/fog/tftp/
 
 
-  tftp:
+  fog_tftp:
     build:
       dockerfile: Dockerfile
       context: ./build/docker/fog_tftpd/
@@ -51,7 +62,7 @@ services:
     ports:
       - 69:1069/udp
     volumes:
-      - tftpd_boot:/tftpboot/boot
+      - tftpd_boot:/fog/tftp/
       - tftpd_configuration:/tftpboot/pxelinux.cfg:ro
 
 volumes:
