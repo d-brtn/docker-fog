@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db:
+    container_name: db
     image: mariadb
     environment:
       MYSQL_USER: root
@@ -23,6 +24,7 @@ services:
   
   
   fog_web:
+    container_name: fog.web
     build:
       context: ./build/docker/fog_web
       dockerfile: Dockerfile
@@ -44,8 +46,11 @@ services:
 
 
   fog_tftp:
+    container_name: fog.tftp
+
     build:
       dockerfile: Dockerfile
+      # TODO: ADD iPXE to /fog/tftp/
       context: ./build/docker/fog_tftpd/
     restart: unless-stopped
     environment:
